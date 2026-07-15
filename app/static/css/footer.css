@@ -1,0 +1,23 @@
+.footer{
+
+    margin-top:100px;
+
+    border-top:1px solid var(--border-color);
+
+    background:var(--surface-color);
+
+    padding:35px 0;
+
+    text-align:center;
+
+    color:var(--secondary-text);
+}
+
+.footer p:first-child{
+
+    color:var(--text-color);
+
+    font-weight:600;
+
+    margin-bottom:8px;
+}

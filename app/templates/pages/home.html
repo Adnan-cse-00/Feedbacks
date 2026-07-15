@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="container">
+
+        <h1>
+
+            Review Anything.
+            <br>
+            Ask About Anything.
+
+        </h1>
+
+        <p>
+
+            Share honest reviews or ask the community before buying
+            products, choosing services, or making important decisions.
+
+        </p>
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                placeholder="Search products, services, doctors..."
+            >
+
+        </div>
+
+        <div class="hero-buttons">
+
+            <a href="/create-review" class="review-btn">
+
+                Create Review
+
+            </a>
+
+            <a href="/create-question" class="question-btn">
+
+                Ask Question
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

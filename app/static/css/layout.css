@@ -1,0 +1,13 @@
+.container{
+
+    width:90%;
+
+    max-width:var(--container-width);
+
+    margin:auto;
+}
+
+section{
+
+    padding:80px 0;
+}

@@ -1,0 +1,99 @@
+.hero{
+
+    text-align:center;
+
+    padding:100px 0;
+}
+
+.hero h1{
+
+    font-size:56px;
+
+    line-height:1.2;
+
+    margin-bottom:25px;
+}
+
+.hero p{
+
+    max-width:700px;
+
+    margin:auto;
+
+    color:var(--secondary-text);
+
+    font-size:18px;
+
+    line-height:1.8;
+}
+
+.search-box{
+
+    margin-top:40px;
+}
+
+.search-box input{
+
+    width:100%;
+
+    max-width:650px;
+
+    background:var(--surface-color);
+
+    color:var(--text-color);
+
+    border:1px solid var(--border-color);
+
+    padding:18px;
+
+    border-radius:var(--radius-medium);
+
+    font-size:17px;
+}
+
+.hero-buttons{
+
+    margin-top:35px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+}
+
+.review-btn{
+
+    background:var(--review-color);
+
+    color:white;
+
+    padding:15px 28px;
+
+    border-radius:var(--radius-medium);
+
+    font-weight:600;
+}
+
+.question-btn{
+
+    background:var(--question-color);
+
+    color:white;
+
+    padding:15px 28px;
+
+    border-radius:var(--radius-medium);
+
+    font-weight:600;
+}
+
+.review-btn:hover{
+
+    opacity:.9;
+}
+
+.question-btn:hover{
+
+    opacity:.9;
+}
