@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}
+Create Review
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <h1>Create Review</h1>
+
+    <form method="POST">
+
+        <div>
+            <label>Title</label>
+            <input type="text" name="title" required>
+        </div>
+
+        <br>
+
+        <div>
+            <label>Rating</label>
+
+            <select name="rating" required>
+                <option value="1">1 ⭐</option>
+                <option value="2">2 ⭐⭐</option>
+                <option value="3">3 ⭐⭐⭐</option>
+                <option value="4">4 ⭐⭐⭐⭐</option>
+                <option value="5">5 ⭐⭐⭐⭐⭐</option>
+            </select>
+
+        </div>
+
+        <br>
+
+        <div>
+            <label>Review</label>
+
+            <textarea
+                name="content"
+                rows="8"
+                required
+            ></textarea>
+
+        </div>
+
+        <br>
+
+        <button type="submit">
+
+            Publish Review
+
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

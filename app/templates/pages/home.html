@@ -11,18 +11,14 @@ Home
     <div class="container">
 
         <h1>
-
             Review Anything.
             <br>
             Ask About Anything.
-
         </h1>
 
         <p>
-
             Share honest reviews or ask the community before buying
             products, choosing services, or making important decisions.
-
         </p>
 
         <div class="search-box">
@@ -37,18 +33,65 @@ Home
         <div class="hero-buttons">
 
             <a href="/create-review" class="review-btn">
-
                 Create Review
-
             </a>
 
             <a href="/create-question" class="question-btn">
-
                 Ask Question
-
             </a>
 
         </div>
+
+    </div>
+
+</section>
+
+<section>
+
+    <div class="container">
+
+        <h2>Latest Reviews</h2>
+
+        <br>
+
+        {% if reviews %}
+
+            {% for review in reviews %}
+
+                <div class="review-card">
+
+                    <h3>{{ review.title }}</h3>
+
+                    <p>
+                        ⭐ {{ review.rating }}/5
+                    </p>
+
+                    <p>
+                        {{ review.content[:150] }}{% if review.content|length > 150 %}...{% endif %}
+                    </p>
+
+                    <small>
+                        By {{ review.author.username }}
+                    </small>
+
+                    <br><br>
+
+                    <a
+                        href="{{ url_for('forum.review_details', review_id=review.id) }}"
+                        class="review-btn"
+                    >
+                        Read More
+                    </a>
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p>No reviews yet.</p>
+
+        {% endif %}
 
     </div>
 

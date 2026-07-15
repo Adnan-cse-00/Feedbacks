@@ -1,0 +1,50 @@
+button,
+.review-btn,
+.question-btn,
+.signup-btn{
+
+    display:inline-block;
+
+    padding:12px 24px;
+
+    border:none;
+
+    border-radius:8px;
+
+    color:white;
+
+    font-weight:600;
+
+    transition:.25s;
+
+    cursor:pointer;
+}
+
+button{
+
+    background:var(--primary-color);
+}
+
+button:hover{
+
+    background:var(--primary-hover);
+
+    transform:translateY(-2px);
+}
+
+.review-btn{
+
+    background:var(--review-color);
+}
+
+.question-btn{
+
+    background:var(--question-color);
+}
+
+.review-btn:hover,
+.question-btn:hover{
+
+    transform:translateY(-2px);
+    opacity:.95;
+}
