@@ -68,3 +68,48 @@ def review_details(review_id):
         review=review,
         comments=comments
     )
+
+@forum.route("/review/<int:review_id>/delete", methods=["POST"])
+@login_required
+def delete_review(review_id):
+
+    review = Forum.query.get_or_404(review_id)
+
+    # Only the author can delete
+    if review.user_id != current_user.id:
+        return "Unauthorized", 403
+
+    db.session.delete(review)
+    db.session.commit()
+
+    return redirect(url_for("main.home"))
+
+@forum.route("/review/<int:review_id>/edit", methods=["GET", "POST"])
+@login_required
+def edit_review(review_id):
+
+    review = Forum.query.get_or_404(review_id)
+
+    # Only the author can edit
+    if review.user_id != current_user.id:
+        return "Unauthorized", 403
+
+    if request.method == "POST":
+
+        review.title = request.form["title"]
+        review.rating = int(request.form["rating"])
+        review.content = request.form["content"]
+
+        db.session.commit()
+
+        return redirect(
+            url_for(
+                "forum.review_details",
+                review_id=review.id
+            )
+        )
+
+    return render_template(
+        "pages/edit_review.html",
+        review=review
+    )
