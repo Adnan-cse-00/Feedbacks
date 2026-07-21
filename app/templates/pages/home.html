@@ -32,11 +32,11 @@ Home
 
         <div class="hero-buttons">
 
-            <a href="/create-review" class="review-btn">
+            <a href="{{ url_for('forum.create_review') }}" class="review-btn">
                 Create Review
             </a>
 
-            <a href="/create-question" class="question-btn">
+            <a href="{{ url_for('forum.create_question') }}" class="question-btn">
                 Ask Question
             </a>
 
@@ -50,46 +50,83 @@ Home
 
     <div class="container">
 
-        <h2>Latest Reviews</h2>
+        <h2>Latest Discussions</h2>
 
         <br>
 
-        {% if reviews %}
+        {% if forums %}
 
-            {% for review in reviews %}
+            {% for forum in forums %}
 
-                <div class="review-card">
+                {% if forum.forum_type == "review" %}
 
-                    <h3>{{ review.title }}</h3>
+                    <div class="review-card">
 
-                    <p>
-                        ⭐ {{ review.rating }}/5
-                    </p>
+                        <h4 style="color:green;">
+                            🟢 REVIEW
+                        </h4>
 
-                    <p>
-                        {{ review.content[:150] }}{% if review.content|length > 150 %}...{% endif %}
-                    </p>
+                        <h3>{{ forum.title }}</h3>
 
-                    <small>
-                        By {{ review.author.username }}
-                    </small>
+                        <p>
+                            ⭐ {{ forum.rating }}/5
+                        </p>
 
-                    <br><br>
+                        <p>
+                            {{ forum.content[:150] }}{% if forum.content|length > 150 %}...{% endif %}
+                        </p>
 
-                    <a
-                        href="{{ url_for('forum.review_details', review_id=review.id) }}"
-                        class="review-btn"
-                    >
-                        Read More
-                    </a>
+                        <small>
+                            By {{ forum.author.username }}
+                        </small>
 
-                </div>
+                        <br><br>
+
+                        <a
+                            href="{{ url_for('forum.review_details', review_id=forum.id) }}"
+                            class="review-btn"
+                        >
+                            Read Review
+                        </a>
+
+                    </div>
+
+                {% else %}
+
+                    <div class="review-card" style="border-left:6px solid orange;">
+
+                        <h4 style="color:orange;">
+                            🟡 QUESTION
+                        </h4>
+
+                        <h3>{{ forum.title }}</h3>
+
+                        <p>
+                            {{ forum.content[:150] }}{% if forum.content|length > 150 %}...{% endif %}
+                        </p>
+
+                        <small>
+                            By {{ forum.author.username }}
+                        </small>
+
+                        <br><br>
+
+                        <a
+                            href="{{ url_for('forum.question_details', question_id=forum.id) }}"
+                            class="question-btn"
+                        >
+                            View Discussion
+                        </a>
+
+                    </div>
+
+                {% endif %}
 
             {% endfor %}
 
         {% else %}
 
-            <p>No reviews yet.</p>
+            <p>No posts yet.</p>
 
         {% endif %}
 

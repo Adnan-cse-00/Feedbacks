@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ question.title }}
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="question-card">
+
+        <h2>{{ question.title }}</h2>
+
+        <p>
+            {{ question.content }}
+        </p>
+
+        <br>
+
+        <small>
+            By {{ question.author.username }}
+        </small>
+
+        <br>
+
+        <small>
+            {{ question.created_at.strftime("%d %B %Y") }}
+        </small>
+
+        <br><br>
+
+        {% if current_user.is_authenticated and current_user.id == question.user_id %}
+
+            <a
+                href="{{ url_for('forum.edit_question', question_id=question.id) }}"
+                class="question-btn"
+            >
+                Edit Question
+            </a>
+
+            <br><br>
+
+            <form
+                action="{{ url_for('forum.delete_question', question_id=question.id) }}"
+                method="POST"
+                onsubmit="return confirm('Are you sure you want to delete this question?');"
+            >
+
+                <button type="submit">
+                    Delete Question
+                </button>
+
+            </form>
+
+        {% endif %}
+
+    </div>
+
+    <br><br>
+
+    <h2>Answers</h2>
+
+    <br>
+
+    {% if comments %}
+
+        {% for comment in comments %}
+
+            <div class="review-card">
+
+                <strong>{{ comment.author.username }}</strong>
+
+                <p>{{ comment.content }}</p>
+
+                <small>
+                    {{ comment.created_at.strftime("%d %B %Y %I:%M %p") }}
+                </small>
+
+            </div>
+
+            <br>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>No answers yet.</p>
+
+    {% endif %}
+
+    <br>
+
+    {% if current_user.is_authenticated %}
+
+        <form method="POST">
+
+            <textarea
+                name="content"
+                rows="5"
+                placeholder="Write your answer..."
+                required
+            ></textarea>
+
+            <br><br>
+
+            <button type="submit">
+                Post Answer
+            </button>
+
+        </form>
+
+    {% else %}
+
+        <p>
+            <a href="{{ url_for('auth.login') }}">
+                Login
+            </a>
+            to answer this question.
+        </p>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

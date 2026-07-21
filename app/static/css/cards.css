@@ -38,3 +38,50 @@
 
     color:var(--secondary-text);
 }
+
+
+/* ========================= */
+/* Question Card             */
+/* ========================= */
+
+.question-card{
+
+    background:var(--surface-color);
+
+    border-radius:12px;
+
+    padding:25px;
+
+    margin:25px 0;
+
+    border-left:6px solid var(--question-color);
+
+    box-shadow:var(--shadow);
+
+    transition:.25s;
+}
+
+.question-card:hover{
+
+    transform:translateY(-4px);
+}
+
+.question-card h2,
+.question-card h3{
+
+    margin-bottom:10px;
+
+    font-size:24px;
+}
+
+.question-card p{
+
+    margin:12px 0;
+
+    line-height:1.7;
+}
+
+.question-card small{
+
+    color:var(--secondary-text);
+}

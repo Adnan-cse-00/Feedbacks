@@ -8,15 +8,13 @@ main = Blueprint("main", __name__)
 @main.route("/")
 def home():
 
-    reviews = Forum.query.filter_by(
-        forum_type="review"
-    ).order_by(
+    forums = Forum.query.order_by(
         Forum.created_at.desc()
     ).all()
 
     return render_template(
         "pages/home.html",
-        reviews=reviews
+        forums=forums
     )
 
 

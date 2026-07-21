@@ -48,3 +48,13 @@ button:hover{
     transform:translateY(-2px);
     opacity:.95;
 }
+
+.review-card form,
+.question-card form{
+
+    display:inline-block;
+
+    margin:0;
+
+    padding:0;
+}

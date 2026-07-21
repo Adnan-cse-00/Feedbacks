@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit Question
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <h1>Edit Question</h1>
+
+    <form method="POST">
+
+        <div>
+
+            <label>Title</label>
+
+            <input
+                type="text"
+                name="title"
+                value="{{ question.title }}"
+                required
+            >
+
+        </div>
+
+        <br>
+
+        <div>
+
+            <label>Question</label>
+
+            <textarea
+                name="content"
+                rows="8"
+                required
+            >{{ question.content }}</textarea>
+
+        </div>
+
+        <br>
+
+        <button type="submit">
+            Save Changes
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}
